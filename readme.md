@@ -1,9 +1,19 @@
-#Descripcion
+# Postman
 
-Una aplicacion para armar listado de las peliculas que queres ver o ya viste y te permite dejarle una puntuacion y reseña. Podes seguir otro usuario si te gustan las reseñas
+Para probar la API ingresá en el siguiente link, hace click en "MovieList" y hace un fork del workspace. La primer request puede demorar unos 30 segundos.
+
+https://www.postman.com/fpaez98/workspace/mymovielist
+
+![Postman](https://user-images.githubusercontent.com/52828805/203870352-b6daee79-2b79-42b4-a46d-63eb6ac80452.png)
+
+# Descripción
+
+Una aplicación para armar listado de las peliculas que queres ver o ya viste y te permite dejarle una puntuacion y reseña. Podes seguir a otro usuario si te gustan las reseñas
 que deja dicho usuario.
 
-#Funcionalidades
+La API está hecha con Node.js (Express), la base de datos con MongoDB y actualmente está hosteada en https://render.com/
+
+# Funcionalidades
 
     El usuario puede:
 
@@ -15,42 +25,31 @@ que deja dicho usuario.
         Buscar Usuarios
         Seguir Usuarios
 
-#Actores/Roles
+# Actores/Roles
 
 - Usuario
 
-#Entidades principales
+# Entidades principales
 
 - Usuarios
 - Reviews
 
-#Instrucciones técnicas para la instalación de un entorno de desarrollo
+# Endpoints de la API
 
-1. Hacer un Fork al repositorio de GitHub: https://github.com/carrauKrizaj/betp2-g3
-2. Clonar el repositorio localmente: no clonar el repo original, sino el que se generó luego del fork en tu propio repo.
-3. Instalar las dependencias; para eso, desde la consola de comando pararse sobre el directorio del repo y ejecutar el comando "npm install".
-4. Agregar las variables de entorno (solicitarlas).
-5. Para ejecutar el programa, desde la consola de comando pararse sobre el directorio del repo y ejecutar el comando "npm run devstart".
-
-#Endpoints de la API
-
-- GET: '/'; Home.
-- GET: '/usuario/:username'; Buscador usuarios. 
+- GET: '/api/peliculas/:movieName'; Devuelve una lista de peliculas con similitud al nombre enviado en la request.
+- GET: '/usuario/:username'; Devuelve un json de usuarios con similitud al nombre enviado en la request.
 - POST: '/usuario/login'; Login.
 - POST: '/usuario/signup'; Registrarse.
 - PUT: '/usuario/:id'; Actualizar usuario.
-- DELETE: '/usuario/:id'; Borrar usuario.
+- DELETE: '/usuario/:id'; Borra al usuario. Se requiere un token que se obtiene al registrar un usuario o iniciar sesion. 
 - POST: '/usuario/add-pelicula/:idUsuario'; Agregar pelicula a la lista de titulos del usuario.
 - PUT: '/usuario/remove-pelicula/:idUsuario/:idPelicula'; Remueve pelicula de la lista de titulos del usuario.
 - POST: '/usuario/follow/:id'; Agrega un usuario a la lista de seguidos del usuario.
 - PUT: '/usuario/unfollow/:idUsuarioLogueado/:idUnfollowUser'; Remueve un usuario de la lista de seguidos del usuario logueado.
-- GET: '/api/reviews' (localhost:3000/reviews); Reseñas.
-- GET: '/api/reviews/:id' (localhost:3000/reviews/':id'); Buscador reseña.
-- POST: '/api/reviews' (localhost:3000/reviews/); Agregar reseña.
-- GET: '/api/reviews/user-reviews/:id' (localhost:3000/reviews/user-reviews/':id'); Busca reseñas por usuario.
-- GET: '/api/reviews/title-reviews/:id' (localhost:3000/reviews/title-reviews/':id'); Busca reseñas por titulo.
-- PUT: '/api/reviews/:id' (localhost:3000/reviews/':id'); Modificar reseña.
-- DELETE: '/api/reviews/:id' (localhost:3000/reviews/':id'); Borrar reseña.
-- GET: '/api/peliculas/:movieName'; Devuelve una lista de peliculas con similitud al nombre enviado en la request.
-
-Los endpoints se pueden testear a través de este link: https://obscure-thicket-15756.herokuapp.com/
+- GET: '/api/reviews'; Devuelve todas las reseñas.
+- GET: '/api/reviews/:id'; Buscador de reseñas por id.
+- POST: '/api/reviews'; Agregar reseña.
+- GET: '/api/reviews/user-reviews/:id'; Busca reseñas por id de usuario.
+- GET: '/api/reviews/title-reviews/:id'; Busca reseñas por id de titulo.
+- PUT: '/api/reviews/:id'; Modificar reseña.
+- DELETE: '/api/reviews/:id'; Borrar reseña.
